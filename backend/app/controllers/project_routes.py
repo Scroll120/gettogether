@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from ..services.project_services import get_all_projects, create_new_project
+from ..services.project_service import get_all_projects, create_new_project
 
 project_bp = Blueprint("projects", __name__)
 
