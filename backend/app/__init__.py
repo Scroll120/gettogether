@@ -13,6 +13,9 @@ def create_app():
     CORS(app)
 
     from .controllers.project_routes import project_bp
+    from .controllers.user_routes import user_bp
+
     app.register_blueprint(project_bp, url_prefix="/api/projects")
+    app.register_blueprint(user_bp, url_prefix="/api/users")
 
     return app
