@@ -1,9 +1,9 @@
 from .. import db
-from .associations import project_users
+from .associations import project_accounts
 
 class Project(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     title = db.Column(db.String(100), nullable = False)
     description = db.Column(db.Text, nullable = False)
 
-    users = db.relationship('User', secondary=project_users, back_populates='projects')
+    accounts = db.relationship('Account', secondary=project_accounts, back_populates='projects')
