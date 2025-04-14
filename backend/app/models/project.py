@@ -1,4 +1,6 @@
 from .. import db
+from ..user import User
+from .associations import project_users
 
 class Project(db.Model):
     id = db.Column(db.Integer, primary_key = True)
