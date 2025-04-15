@@ -3,9 +3,9 @@ from ..repositories import account_repository
 from ..models.account import Account
 
 def register_account(data):
-    username = data.username
-    email = data.email
-    password = data.password
+    username = data.get("username")
+    email = data.get("email")
+    password = data.get("password")
 
     if not username or not email or not password:
         return {"error": "Missing required field!"}, 400
