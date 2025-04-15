@@ -9,7 +9,7 @@ def register():
     response, status = register_account(data)
     return jsonify(response), status
 
-@auth_bp.route("/login", methods=[POST])
+@auth_bp.route("/login", methods=["POST"])
 def login():
     data = request.get_json()
     response, status = login_account(data)
