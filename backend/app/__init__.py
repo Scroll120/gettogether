@@ -14,8 +14,10 @@ def create_app():
 
     from .controllers.project_routes import project_bp
     from .controllers.account_routes import account_bp
+    from .controllers.auth_routes import auth_bp
 
     app.register_blueprint(project_bp, url_prefix="/api/projects")
     app.register_blueprint(account_bp, url_prefix="/api/accounts")
+    app.register_blueprint(auth_bp, url_prefix="/api/auth")
 
     return app
