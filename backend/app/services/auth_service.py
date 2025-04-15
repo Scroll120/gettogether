@@ -1,6 +1,6 @@
 import jwt
 from datetime import datetime, timedelta
-from werkzeug.security import generate_password_hash
+from werkzeug.security import generate_password_hash, check_password_hash
 from ..repositories import account_repository
 from ..models.account import Account
 from ..config.config import Config
@@ -8,7 +8,7 @@ from ..config.config import Config
 SECRET_KEY = Config.SECRET_KEY
 
 def generate_jwt(account: Account):
-    expiration_time= datetime.now(datetime.timezone.utc) + timedelta(hours=1)
+    expiration_time = datetime.now(datetime.timezone.utc) + timedelta(hours=1)
     token = jwt.encode(
         {
             "user_id": account.id,
@@ -17,6 +17,23 @@ def generate_jwt(account: Account):
         SECRET_KEY,
         algorithm="HS256"
     )
+    return token
+
+def login_account(data):
+    username = data.get("username")
+    password = data.get("password")
+
+    if not username or not password:
+        return {"error": "Missing username or password!"}, 401
+    
+    account = account_repository.get_account_by_username(username)
+
+    if not account or not check_password_hash(account.password, password):
+        return {"error": "Invalid credentials!"}, 401
+    
+    token = generate_jwt(account)
+
+    return {"message": "Login was successful!", "token": token}, 200
 
 def register_account(data):
     username = data.get("username")
