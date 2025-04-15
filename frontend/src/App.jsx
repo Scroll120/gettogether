@@ -6,6 +6,7 @@ function Layout() {
   return (
     <>
       <p>NavBar...</p>
+      <Outlet/>
     </>
   )
 }
@@ -14,11 +15,16 @@ function App() {
 
   const router = createBrowserRouter([
     {
-        path: "/",
-        element: <HomePage
-        />,
-    }
-  ])
+      path: "/",
+      element: <Layout/>,
+      children: [
+        {
+          path:"/",
+          element: <HomePage/>
+        },
+      ],
+    },
+  ]);
 
   return (
     <RouterProvider router={router}/>
