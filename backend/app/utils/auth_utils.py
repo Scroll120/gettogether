@@ -2,11 +2,11 @@ from functools import wraps
 from flask import request, jsonify
 import jwt
 from ..config.config import Config
-from ..repositories.account_repository import get_account_by_id
+from ..repositories.account_repository import get_by_id
 
 SECRET_KEY = Config.SECRET_KEY
 
-def token_requried(f):
+def token_required(f):
     
     @wraps(f)
     def decorated_function(*args, **kwargs):
@@ -20,7 +20,7 @@ def token_requried(f):
         
         try:
             data = jwt.decode(token, SECRET_KEY, algorithms=["HS256"])
-            curren_user_id = data[user_id]
+            curren_user_id = data["user_id"]
         except jwt.ExpiredSignatureError:
             return jsonify({"error": "Token has expired"}), 403
         except jwt.InvalidTokenError:
