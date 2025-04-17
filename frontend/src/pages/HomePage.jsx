@@ -1,4 +1,5 @@
 import "./homePage.css"
+import back from "../assets/temp-back.png";
 
 export default function HomePage() {
     console.log("test")
@@ -6,7 +7,7 @@ export default function HomePage() {
     return (
         <section className="homePageSection">
             <div className="homeContainer">
-                <p>Home Page WOW!</p>
+                <img src={back}/>
             </div>
         </section>
     )

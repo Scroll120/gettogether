@@ -14,7 +14,9 @@ export default function NavBar() {
         <nav className="navbar">
             <div className="main-left">
                 <div className='left-section'>
-                <img src={logo} alt='Logo' className='logo' onClick={() => navigate("/")}/>
+                    <div className='logo-wrapper'>
+                        <img src={logo} alt='Logo' className='logo' onClick={() => navigate("/")}/>
+                    </div>
                 </div>
                 <div className='center-section'>
                     <form

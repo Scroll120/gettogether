@@ -34,17 +34,22 @@
   flex-shrink: 0;
 }
 
+.logo-wrapper {
+  display: inline-block;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  cursor: pointer;
+}
+
+.logo-wrapper:hover {
+  transform: scale(1.06);
+  filter: drop-shadow(0 0 12px rgba(0, 0, 0, 0.8));
+}
+
 .logo {
   height: 64px;
   width: auto;
   animation: spin 20s linear infinite;
-  transition: filter 0.3s ease, transform 0.3s ease;
-  cursor: pointer;
-}
-
-.logo:hover {
-  animation-play-state: paused;
-  filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.6));
+  pointer-events: none;
 }
 
 
