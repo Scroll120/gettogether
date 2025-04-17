@@ -13,7 +13,7 @@
   justify-content: space-between;
   flex-wrap: wrap;
   padding: 1rem 2rem;
-  background-color: #153555;
+  background-color: #13273b;
   gap: 1.5rem;
 }
 
@@ -35,7 +35,7 @@
 }
 
 .logo {
-  height: 56px;
+  height: 64px;
   width: auto;
   animation: spin 20s linear infinite;
   transition: filter 0.3s ease, transform 0.3s ease;
