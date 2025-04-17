@@ -1,11 +1,12 @@
 import {createBrowserRouter, Outlet, RouterProvider} from "react-router-dom";
 import HomePage from "./pages/HomePage";
+import NavBar from "./components/NavBar";
 
 
 function Layout() {
   return (
     <>
-      <p>NavBar...</p>
+      <NavBar/>
       <Outlet/>
     </>
   )
