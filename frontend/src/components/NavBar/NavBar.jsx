@@ -16,16 +16,18 @@ export default function NavBar() {
                 <img src={logo} alt='Logo' className='logo' onClick={() => navigate("/")}/>
             </div>
             <div className='center-section'>
-            <form onSubmit={(e) => { e.preventDefault(); console.log(test); }} className='search-project-input-form'>
-                    <InputField
-                    className="search-project-input-field"
-                    placeholder="Search Projects..."
-                    type="text"
-                    value={test}
-                    onChange={(e) => setTest(e.target.value)}/>
-                    <button className='search-project-button' type='submit'>
-                        <FaSearch size={16} color="#ccc"/>
-                    </button>
+                <form
+                onSubmit={(e) => { e.preventDefault(); console.log(test); }}
+                className='search-project-input-form'>
+                    <div className='search-project-input-field'>
+                        <FaSearch size={14} color="#ccc"/>
+                        <InputField
+                        className="search-project-input-field"
+                        placeholder="Search Projects..."
+                        type="text"
+                        value={test}
+                        onChange={(e) => setTest(e.target.value)}/>
+                    </div>
                 </form>
             </div>
             <div className='right-section'>
