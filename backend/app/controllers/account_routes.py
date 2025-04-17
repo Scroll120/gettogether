@@ -9,8 +9,8 @@ def get_accounts():
 
 @account_bp.route("/<int:id>", methods=["GET"])
 def get_account(id):
-    account = get_account_by_id(id)
-    return jsonify(account), 201
+    account, status = get_account_by_id(id)
+    return jsonify(account), status
 
 @account_bp.route("/", methods=["POST"])
 def create_account():
