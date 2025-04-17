@@ -12,27 +12,32 @@ export default function NavBar() {
     return (
 
         <nav className="navbar">
-            <div className='left-section'>
+            <div className="main-left">
+                <div className='left-section'>
                 <img src={logo} alt='Logo' className='logo' onClick={() => navigate("/")}/>
+                </div>
+                <div className='center-section'>
+                    <form
+                        onSubmit={(e) => { e.preventDefault(); console.log(test); }}
+                        className='search-project-input-form'>
+                        <div className='search-project-input-field'>
+                            <FaSearch size={14} color="#ccc" />
+                            <InputField
+                                className="search-project-input-field"
+                                placeholder="Search Projects..."
+                                type="text"
+                                value={test}
+                                onChange={(e) => setTest(e.target.value)} />
+                        </div>
+                    </form>
+                </div>
             </div>
-            <div className='center-section'>
-                <form
-                onSubmit={(e) => { e.preventDefault(); console.log(test); }}
-                className='search-project-input-form'>
-                    <div className='search-project-input-field'>
-                        <FaSearch size={14} color="#ccc"/>
-                        <InputField
-                        className="search-project-input-field"
-                        placeholder="Search Projects..."
-                        type="text"
-                        value={test}
-                        onChange={(e) => setTest(e.target.value)}/>
-                    </div>
-                </form>
-            </div>
+
             <div className='right-section'>
-                <p>sign in</p>
+                <button className="sign-button" onClick={() => navigate("/register")}>Sign Up</button>
+                <button className="sign-button" onClick={() => navigate("/login")}>Sign In</button>
             </div>
         </nav>
+
     )
 }
