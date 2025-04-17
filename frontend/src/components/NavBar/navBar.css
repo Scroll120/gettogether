@@ -1,0 +1,68 @@
+@keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+.navbar {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background-color: #153555;
+}
+
+.left-section {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo {
+    height: 64px;
+    width: auto;
+    animation: spin 12s linear infinite;
+    transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.logo:hover {
+    animation-play-state: paused;
+    filter: drop-shadow(0 0 8px rgba(0,0,0,0.6));
+    cursor: pointer;
+}
+
+.search-project-input-form {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border-radius: 999px;
+  overflow: hidden;
+  border: 1px solid #ccc;
+  height: 40px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.search-project-input-field {
+  border: none;
+  outline: none;
+  padding: 0 15px;
+  font-size: 14px;
+  flex: 1;
+  height: 100%;
+  background-color: white;
+  color: #333;
+}
+
+.search-project-button {
+  width: 56px;
+  height: 100%;
+  border: none;
+  background-color: rgb(68, 152, 59);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-left: 1px solid #ccc;
+}
