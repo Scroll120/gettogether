@@ -36,8 +36,8 @@ export default function NavBar() {
             </div>
 
             <div className='right-section'>
-                <button className="sign-button" onClick={() => navigate("/register")}>Sign Up</button>
-                <button className="sign-button" onClick={() => navigate("/login")}>Sign In</button>
+                <button className="sign-button sign-up" onClick={() => navigate("/register")}>Sign Up</button>
+                <button className="sign-button sign-in" onClick={() => navigate("/login")}>Sign In</button>
             </div>
         </nav>
 
