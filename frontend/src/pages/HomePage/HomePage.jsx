@@ -2,6 +2,7 @@ import "./homePage.css"
 import bgvideo from "../../assets/video-bg.mov"
 import logo from "../../assets/logo.png"
 import { useState } from "react";
+import ProjectCard from "../../components/ProjectCard/ProjectCard";
 
 export default function HomePage() {
     const [carouselList, setCarouselList] = useState([]);
@@ -19,33 +20,20 @@ export default function HomePage() {
                 <div className="home-page-project-slide-container">
                     <div className="carousel">
                         <div className="carousel-track">
-                            <div className="project-card"> {carouselList[0] ? 1 :
-                                <img src={logo} alt="Logo" className="carousel-logo"/>}</div>
-                            <div className="project-card"> {carouselList[1] ? 2 :
-                                <img src={logo} alt="Logo" className="carousel-logo"/>}</div>
-                            <div className="project-card"> {carouselList[2] ? 3 :
-                                <img src={logo} alt="Logo" className="carousel-logo"/>}</div>
-                            <div className="project-card"> {carouselList[3] ? 4 :
-                                <img src={logo} alt="Logo" className="carousel-logo"/>}</div>
-                            <div className="project-card"> {carouselList[4] ? 5 :
-                                <img src={logo} alt="Logo" className="carousel-logo"/>}</div>
-                            <div className="project-card"> {carouselList[5] ? 6 :
-                                <img src={logo} alt="Logo" className="carousel-logo"/>}</div>
-                            <div className="project-card"> {carouselList[6] ? 7 :
-                                <img src={logo} alt="Logo" className="carousel-logo"/>}</div>
+                            <ProjectCard project={carouselList[0]}/>
+                            <ProjectCard project={carouselList[1]}/>
+                            <ProjectCard project={carouselList[2]}/>
+                            <ProjectCard project={carouselList[3]}/>
+                            <ProjectCard project={carouselList[4]}/>
+                            <ProjectCard project={carouselList[5]}/>
+                            <ProjectCard project={carouselList[6]}/>
                             {/*Carousel repeats here (probably could be built to be more efficient too*/}
-                            <div className="project-card"> {carouselList[0] ? 1 :
-                                <img src={logo} alt="Logo" className="carousel-logo"/>}</div>
-                            <div className="project-card"> {carouselList[1] ? 2 :
-                                <img src={logo} alt="Logo" className="carousel-logo"/>}</div>
-                            <div className="project-card"> {carouselList[2] ? 3 :
-                                <img src={logo} alt="Logo" className="carousel-logo"/>}</div>
-                            <div className="project-card"> {carouselList[3] ? 4 :
-                                <img src={logo} alt="Logo" className="carousel-logo"/>}</div>
-                            <div className="project-card"> {carouselList[4] ? 5 :
-                                <img src={logo} alt="Logo" className="carousel-logo"/>}</div>
-                            <div className="project-card"> {carouselList[5] ? 6 :
-                                <img src={logo} alt="Logo" className="carousel-logo"/>}</div>
+                            <ProjectCard project={carouselList[0]}/>
+                            <ProjectCard project={carouselList[1]}/>
+                            <ProjectCard project={carouselList[2]}/>
+                            <ProjectCard project={carouselList[3]}/>
+                            <ProjectCard project={carouselList[4]}/>
+                            <ProjectCard project={carouselList[5]}/>
                         </div>
                     </div>
                 </div>

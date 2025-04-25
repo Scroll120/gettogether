@@ -101,32 +101,6 @@ video {
     display: none;
 }
 
-.project-card {
-    flex: 0 0 240px;
-    height: 160px;
-    margin-right: 2rem;
-    background-color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Trebuchet MS';
-    font-weight: bold;
-    font-size: 24px;
-    color: black;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    transition: transform 0.3s ease;
-}
-
-.project-card:hover {
-    transform: scale(1.05);
-}
-
-.carousel-logo {
-    height: 88px;
-    animation: spin 20s linear infinite;
-    filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.4));
-}
-
 @keyframes scroll-left {
     0% {
         transform: translateX(0);
