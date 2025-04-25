@@ -1,6 +1,6 @@
 import "./homePage.css"
-import bgvideo from "../assets/video-bg.mov"
-import logo from "../assets/logo.png"
+import bgvideo from "../../assets/video-bg.mov"
+import logo from "../../assets/logo.png"
 import { useState } from "react";
 
 export default function HomePage() {
