@@ -68,6 +68,7 @@ video {
 .home-logo {
     height: 128px;
     animation: spin 20s linear infinite;
+    filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.4));
 }
 
 .home-page-project-slide-container {
@@ -118,6 +119,12 @@ video {
 
 .project-card:hover {
     transform: scale(1.05);
+}
+
+.carousel-logo {
+    height: 88px;
+    animation: spin 20s linear infinite;
+    filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.4));
 }
 
 @keyframes scroll-left {
