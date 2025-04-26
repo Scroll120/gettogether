@@ -7,11 +7,12 @@ def get_all_accounts():
 
 def get_account_by_id(id):
     account = get_by_id(id)
-    return {"id": account.id,
-             "username": account.username,
-             "email": account.email
-             }
-    return None
+    if account:
+        return {"id": account.id,
+                "username": account.username,
+                "email": account.email
+                }
+    return {"error": "Account not found"}, 404
 
 def create_new_account(data):
     account = Account(username=data["username"])
