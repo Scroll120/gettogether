@@ -33,10 +33,7 @@ export default function LoginPage() {
                             placeHolder='Email'
                             value={loginDetails.email}
                             onChange={(e) => {setLoginDetails(
-                                {
-                                    email: e.target.value,
-                                    password: loginDetails.password
-                                }
+                                {...loginDetails, email: e.target.value}
                             )}}
                             />
                         </div>
@@ -46,10 +43,7 @@ export default function LoginPage() {
                             placeHolder='Password'
                             value={loginDetails.password}
                             onChange={(e) => {setLoginDetails(
-                                {
-                                    email: loginDetails.email,
-                                    password: e.target.value
-                                }
+                                {...loginDetails, password: e.target.value}
                             )}}
                             />
                         </div>
