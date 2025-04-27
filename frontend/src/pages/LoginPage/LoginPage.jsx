@@ -7,7 +7,7 @@ import InputField from '../../components/InputField/InputField';
 export default function LoginPage() {
     const navigate = useNavigate()
     const [loginDetails, setLoginDetails] = useState({
-        email: '',
+        username: '',
         password: '',
     });
 
@@ -15,6 +15,23 @@ export default function LoginPage() {
     // http://localhost:5000/api/auth/login
     async function handleSubmit(e) {
         e.preventDefault();
+
+        const response = await fetch("http://localhost:5000/api/auth/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({username: loginDetails.username, password: loginDetails.password})
+        })
+
+        if (response.status === 401) {
+            console.log("merp")
+        } else if (response.status === 200 ) {
+            const data = await response.json();
+            localStorage.setItem("user", JSON.stringify(data));
+            console.log(data)
+        }
+        
         console.log(loginDetails)
     }
 
@@ -27,17 +44,19 @@ export default function LoginPage() {
                 <div className='login-overlay'></div>
                 <div className='login-box'>
                     <form onSubmit={handleSubmit} className='login-form'>
-                        <div className='email-input-box'>
+                        <div className='username-input-box'>
+                            Username
                             <InputField
-                            className='email-input-field'
-                            placeHolder='Email'
-                            value={loginDetails.email}
+                            className='username-input-field'
+                            placeHolder='Username'
+                            value={loginDetails.username}
                             onChange={(e) => {setLoginDetails(
-                                {...loginDetails, email: e.target.value}
+                                {...loginDetails, username: e.target.value}
                             )}}
                             />
                         </div>
                         <div className='password-input-box'>
+                            Password
                             <InputField
                             className='password-input-field'
                             placeHolder='Password'

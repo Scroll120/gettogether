@@ -33,7 +33,7 @@ def login_account(data):
     
     token = generate_jwt(account)
 
-    return {"message": "Login was successful!", "token": token}, 200
+    return {"token": token}, 200
 
 def register_account(data):
     username = data.get("username")
