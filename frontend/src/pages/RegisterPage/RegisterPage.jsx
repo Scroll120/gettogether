@@ -12,6 +12,7 @@ export default function RegisterPage() {
         emial: '',
     });
     const [isFailedRegister, setIsFailedRegister] = useState(false);
+    const [isSuccessfulRegister, setIsSuccessfulRegister] = useState(false);
 
 
         // http://localhost:5000/api/auth/register
@@ -26,12 +27,12 @@ export default function RegisterPage() {
             body: JSON.stringify({username: registerDetails.username, password: registerDetails.password, email: registerDetails.email})
         })
 
-        if (response.status === 401) {
+        if (response.status === 400) {
             setIsFailedRegister(true)
-        } else if (response.status === 200 ) {
+        } else if (response.status === 201 ) {
             const data = await response.json();
+            setIsSuccessfulRegister(true)
             console.log(data)
-            navigate('/')
         }
     }
 
@@ -46,6 +47,13 @@ export default function RegisterPage() {
                     { isFailedRegister ?
                             <div className='failed-register-message-box'>
                                 <p className='failed-register-message'>Failed to Register!</p>
+                            </div>
+                        :
+                            <></>
+                    }
+                    { isSuccessfulRegister ?
+                            <div className='successful-register-message-box'>
+                                <p className='successful-register-message'>Successful Registration!</p>
                             </div>
                         :
                             <></>
