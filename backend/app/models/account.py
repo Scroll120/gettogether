@@ -1,5 +1,5 @@
 from .. import db
-from .associations import project_accounts
+from .associations import hangout_accounts
 
 class Account(db.Model):
     id = db.Column(db.Integer, primary_key = True)
@@ -7,4 +7,4 @@ class Account(db.Model):
     email = db.Column(db.String(100), unique=True, nullable=False)
     password = db.Column(db.String(256), nullable = False)
 
-    projects = db.relationship('Project', secondary=project_accounts, back_populates='accounts')
+    hangouts = db.relationship('Hangout', secondary=hangout_accounts, back_populates='accounts')
