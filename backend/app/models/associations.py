@@ -1,6 +1,6 @@
 from .. import db
 
-project_accounts = db.Table('project_accounts', 
+hangout_accounts = db.Table('hangout_accounts', 
         db.Column('account_id', db.Integer, db.ForeignKey('account.id'), primary_key=True),
-        db.Column('project_id', db.Integer, db.ForeignKey('project.id'), primary_key=True)
+        db.Column('hangout_id', db.Integer, db.ForeignKey('hangout.id'), primary_key=True)
 )

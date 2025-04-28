@@ -67,26 +67,20 @@ export default function RegisterPage() {
                 <video src={bgvideo} loop muted autoPlay />
                 <div className='register-overlay'></div>
                 <div className='register-box'>
-                    { isFailedRegister ?
+                    { isFailedRegister &&
                             <div className='failed-register-message-box'>
                                 <p className='failed-register-message'>Failed to Register!</p>
                             </div>
-                        :
-                            <></>
                     }
-                    { isSuccessfulRegister ?
+                    { isSuccessfulRegister &&
                             <div className='successful-register-message-box'>
                                 <p className='successful-register-message'>Successful Registration!</p>
                             </div>
-                        :
-                            <></>
                     }
-                    { isAutoLoginFailed ?
+                    { isAutoLoginFailed &&
                             <div className='failed-autologin-message-box'>
                                 <p className='failed-autologin-message'>Auto-login failed!</p>
                             </div>
-                        :
-                            <></>
                     }
                     <form onSubmit={handleSubmit} className='register-form'>
                         <div className='username-input-box'>
