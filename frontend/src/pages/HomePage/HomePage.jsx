@@ -20,6 +20,7 @@ export default function HomePage() {
                 <div className="home-page-project-slide-container">
                     <div className="carousel">
                         <div className="carousel-track">
+                            {/*Note to self: Replace with a loop for better handling and just general cleaner code*/}
                             <ProjectCard project={carouselList[0]}/>
                             <ProjectCard project={carouselList[1]}/>
                             <ProjectCard project={carouselList[2]}/>
