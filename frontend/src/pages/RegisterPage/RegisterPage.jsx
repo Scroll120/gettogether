@@ -9,15 +9,19 @@ export default function RegisterPage() {
     const [registerDetails, setRegisterDetails] = useState({
         username: '',
         password: '',
-        emial: '',
+        email: '',
     });
     const [isFailedRegister, setIsFailedRegister] = useState(false);
     const [isSuccessfulRegister, setIsSuccessfulRegister] = useState(false);
+    const [isAutoLoginFailed, setIsAutoLoginFailed] = useState(false);
 
 
         // http://localhost:5000/api/auth/register
     async function handleSubmit(e) {
         e.preventDefault();
+        setIsAutoLoginFailed(false)
+        setIsFailedRegister(false)
+        setIsSuccessfulRegister(false)
 
         const response = await fetch("http://localhost:5000/api/auth/register", {
             method: "POST",
@@ -30,9 +34,28 @@ export default function RegisterPage() {
         if (response.status === 400) {
             setIsFailedRegister(true)
         } else if (response.status === 201 ) {
-            const data = await response.json();
             setIsSuccessfulRegister(true)
-            console.log(data)
+            setTimeout(() => {
+                autoLogin();
+            }, 2000)
+        }
+    }
+
+    async function autoLogin() {
+        const response = await fetch("http://localhost:5000/api/auth/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({username: registerDetails.username, password: registerDetails.password})
+        })
+
+        if (response.status === 200) {
+            const data = await response.json();
+            localStorage.setItem("user", JSON.stringify(data));
+            navigate('/')
+        } else if (response.status === 401) {
+            setIsAutoLoginFailed(true)
         }
     }
 
@@ -54,6 +77,13 @@ export default function RegisterPage() {
                     { isSuccessfulRegister ?
                             <div className='successful-register-message-box'>
                                 <p className='successful-register-message'>Successful Registration!</p>
+                            </div>
+                        :
+                            <></>
+                    }
+                    { isAutoLoginFailed ?
+                            <div className='failed-autologin-message-box'>
+                                <p className='failed-autologin-message'>Auto-login failed!</p>
                             </div>
                         :
                             <></>
