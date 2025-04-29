@@ -52,7 +52,20 @@ export default function NavBar() {
             <div className='right-section'>
                 {isLoggedIn ? (
                     <>
-                        <button className='sign-button sign-out' onClick={handleSignOut}>Sign Out</button>
+                        <div className='dropdown-menu-wrapper'>
+                            <div className='hamburger-icon'> &#9776; </div>
+
+                            <div className="dropdown-hover-buffer"></div>
+                            <ul className='dropdown'>
+                                <li className='dropdown-profile'>
+                                    <a className='dropdown-profile-button' onClick={() => console.log("profile")}>Profile</a>
+                                </li>
+                                <li className='dropdown-dashboard'>
+                                    <a className='dropdown-dashboard-button' onClick={() => console.log("dashboard")}>Dashboard</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <button className="sign-button sign-out" onClick={() => navigate(handleSignOut)}>Sign Out</button>
                     </>
                 ) : (
                     <>
