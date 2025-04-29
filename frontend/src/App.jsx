@@ -3,6 +3,7 @@ import NavBar from "./components/NavBar/NavBar";
 import HomePage from "./pages/HomePage/HomePage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
+import ProfilePage from "./pages/ProfilePage/ProfilePage";
 
 
 function Layout() {
@@ -32,6 +33,10 @@ function App() {
         {
           path: "/login",
           element: <LoginPage/>
+        },
+        {
+          path: "/me",
+          element: <ProfilePage/>
         },
       ],
     },

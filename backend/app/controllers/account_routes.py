@@ -13,8 +13,13 @@ def get_account(id):
     account, status = get_account_by_id(id)
     return jsonify(account), status
 
-@account_bp.route("/", methods=["POST"])
+@account_bp.route("/me", methods=["GET"])
 @token_required
+def get_my_account(current_user_id):
+    account, status = get_account_by_id(current_user_id)
+    return jsonify(account), status
+
+@account_bp.route("/", methods=["POST"])
 def create_account():
     data = request.get_json()
     account = create_new_account(data)
