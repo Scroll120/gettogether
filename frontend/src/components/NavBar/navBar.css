@@ -135,6 +135,91 @@
   background-color: rgb(0,0,0);
 }
 
+.sign-out {
+  background-color: rgb(170, 57, 57);
+}
+
+.dropdown-menu-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 100;
+}
+
+.hamburger-icon {
+  font-size: 24px;
+  cursor: pointer;
+  user-select: none;
+  padding: 0.5rem;
+}
+
+.hamburger-icon:hover {
+  transition: transform 0.2s ease, filter 0.2s ease;
+  filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.4));
+  transform: scale(1.2);
+}
+
+.dropdown-menu-wrapper:hover .dropdown{
+  display: flex;
+  animation: dropDownFadeIn 0.3s ease forwards;
+}
+
+.dropdown {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 130%;
+  right: 0;
+  background-color: white;
+  border: 2px solid #ccc;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  min-width: 160px;
+  z-index: 20;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.dropdown-hover-buffer {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  height: 20px;
+  width: 100%;
+  z-index: 10;
+}
+
+@keyframes dropDownFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dropdown li {
+  list-style: none;
+  width: 100%;
+}
+
+.dropdown a {
+  display: block;
+  padding: 0.75rem 1.25rem;
+  font-size: 16px;
+  font-family: 'Trebuchet MS';
+  color: #333;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.dropdown a:hover {
+  background-color: #f2f2f2;
+}
+
+
+
 
 
 @media (max-width: 600px) {
@@ -162,4 +247,17 @@
     width: 100%;
     max-width: 200px;
   }
+
+  .dropdown {
+    right: auto;
+    left: 0;
+    min-width: 100%;
+    transform: translateX(0);
+  }
+
+  .dropdown-menu-wrapper {
+    width: 100%;
+    justify-content: center;
+  }
+
 }
