@@ -1,7 +1,7 @@
 import jwt
 from datetime import datetime, timedelta
 from werkzeug.security import generate_password_hash, check_password_hash
-from ..repositories import account_repository
+from ..repositories.account_repository import get_account_by_username, get_account_by_email, save
 from ..models.account import Account
 from ..config.config import Config
 
@@ -26,7 +26,7 @@ def login_account(data):
     if not username or not password:
         return {"error": "Missing username or password!"}, 401
     
-    account = account_repository.get_account_by_username(username)
+    account = get_account_by_username(username)
 
     if not account or not check_password_hash(account.password, password):
         return {"error": "Invalid credentials!"}, 401
@@ -43,10 +43,10 @@ def register_account(data):
     if not username or not email or not password:
         return {"error": "Missing required field!"}, 400
 
-    if account_repository.get_account_by_username(username) or account_repository.get_account_by_email(email):
+    if get_account_by_username(username) or get_account_by_email(email):
         return {"error": "User already exists!"}, 400
     
     hashed_password = generate_password_hash(password)
     new_account = Account(username=username, email=email, password=hashed_password)
-    account_repository.save(new_account)
+    save(new_account)
     return {"message": "User registered successfully!"}, 201

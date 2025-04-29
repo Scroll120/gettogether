@@ -10,7 +10,6 @@ def get_account_by_username(username):
 def get_by_id(id):
     return Account.query.get(id)
 
-# possibly wont be needed
 def get_account_by_email(email):
     return Account.query.filter_by(email=email).first()
 
