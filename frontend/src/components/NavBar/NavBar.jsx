@@ -58,14 +58,14 @@ export default function NavBar() {
                             <div className="dropdown-hover-buffer"></div>
                             <ul className='dropdown'>
                                 <li className='dropdown-profile'>
-                                    <a className='dropdown-profile-button' onClick={() => console.log("profile")}>Profile</a>
+                                    <a className='dropdown-profile-button' onClick={() => navigate('/me')}>Profile</a>
                                 </li>
                                 <li className='dropdown-dashboard'>
-                                    <a className='dropdown-dashboard-button' onClick={() => console.log("dashboard")}>Dashboard</a>
+                                    <a className='dropdown-dashboard-button' onClick={() => navigate('/dashboard')}>Dashboard</a>
                                 </li>
                             </ul>
                         </div>
-                        <button className="sign-button sign-out" onClick={() => navigate(handleSignOut)}>Sign Out</button>
+                        <button className="sign-button sign-out" onClick={handleSignOut}>Sign Out</button>
                     </>
                 ) : (
                     <>
