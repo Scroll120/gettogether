@@ -100,7 +100,7 @@ export default function RegisterPage() {
                             <InputField
                             className='email-input-field'
                             placeHolder='Email'
-                            type='text'
+                            type='email'
                             value={registerDetails.email}
                             onChange={(e) => {setRegisterDetails(
                                 {...registerDetails, email: e.target.value}
