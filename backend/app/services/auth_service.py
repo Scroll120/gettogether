@@ -8,11 +8,11 @@ from ..config.config import Config
 SECRET_KEY = Config.SECRET_KEY
 
 def generate_jwt(account: Account):
-    expiration_time = datetime.now() + timedelta(seconds=1)
+    expiration_time = datetime.now() + timedelta(hours=1)
     token = jwt.encode(
         {
             "user_id": account.id,
-            "exp": expiration_time
+            "exp": int(expiration_time.timestamp())
         },
         SECRET_KEY,
         algorithm="HS256"

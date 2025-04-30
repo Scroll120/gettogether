@@ -12,7 +12,6 @@ export default function NavBar() {
 
     useEffect(() =>{
         const user = localStorage.getItem('user');
-        console.log(user)
         setIsLoggedIn(!!user);
         
         const validate = async () => {
@@ -26,10 +25,8 @@ export default function NavBar() {
 
         validate();
     },[location.pathname]);
-    console.log(isLoggedIn)
 
     async function checkTokenValidity () {
-        console.log("a")
         try {
             const response = await fetch("http://localhost:5000/api/auth/check", {
                 method: "GET",
@@ -38,7 +35,6 @@ export default function NavBar() {
                     "Authorization": `Bearer ${JSON.parse(localStorage.getItem("user")).token}`
                 }
             });
-            console.log(response.status)
             return response.status === 200;
         } catch (err) {
             return false;

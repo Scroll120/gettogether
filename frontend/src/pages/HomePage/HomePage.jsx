@@ -6,7 +6,6 @@ import ProjectCard from "../../components/ProjectCard/ProjectCard";
 
 export default function HomePage() {
     const [carouselList, setCarouselList] = useState([]);
-    console.log("test")
 
     return (
         <section className="home-page-section">
