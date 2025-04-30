@@ -12,8 +12,38 @@ export default function NavBar() {
 
     useEffect(() =>{
         const user = localStorage.getItem('user');
+        console.log(user)
         setIsLoggedIn(!!user);
+        
+        const validate = async () => {
+            if (user) {
+                const isValid = await checkTokenValidity();
+                if (!isValid) {
+                    handleSignOut();
+                }
+            }
+        }
+
+        validate();
     },[location.pathname]);
+    console.log(isLoggedIn)
+
+    async function checkTokenValidity () {
+        console.log("a")
+        try {
+            const response = await fetch("http://localhost:5000/api/auth/check", {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${JSON.parse(localStorage.getItem("user")).token}`
+                }
+            });
+            console.log(response.status)
+            return response.status === 200;
+        } catch (err) {
+            return false;
+        }
+    }
 
 
     function handleSignOut() {
