@@ -17,20 +17,26 @@ export default function LoginPage() {
     async function handleSubmit(e) {
         e.preventDefault();
 
-        const response = await fetch("http://localhost:5000/api/auth/login", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({username: loginDetails.username, password: loginDetails.password})
-        })
+        try {
 
-        if (response.status === 401) {
-            setIsFailedLogin(true)
-        } else if (response.status === 200 ) {
-            const data = await response.json();
-            localStorage.setItem("user", JSON.stringify(data));
-            navigate('/')
+            const response = await fetch("http://localhost:5000/api/auth/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({username: loginDetails.username, password: loginDetails.password})
+            })
+    
+            if (response.status === 401) {
+                setIsFailedLogin(true)
+            } else if (response.status === 200 ) {
+                const data = await response.json();
+                localStorage.setItem("user", JSON.stringify(data));
+                navigate('/')
+            }
+
+        } catch (err) {
+            console.error("Encountered error while logging in: ", err);
         }
     }
 

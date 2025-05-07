@@ -37,6 +37,7 @@ export default function NavBar() {
             });
             return response.status === 200;
         } catch (err) {
+            console.error("Enounctered error while trying to check for token validity: ", err);
             return false;
         }
     }

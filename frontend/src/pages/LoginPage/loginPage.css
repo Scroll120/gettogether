@@ -157,7 +157,7 @@ video {
 @media (max-width: 480px) {
     .login-box {
         width: 90%;
-        top: 35%;
+        top: 30%;
     }
 
     .username-input-box,

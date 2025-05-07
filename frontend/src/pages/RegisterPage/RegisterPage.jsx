@@ -22,22 +22,26 @@ export default function RegisterPage() {
         setIsAutoLoginFailed(false)
         setIsFailedRegister(false)
         setIsSuccessfulRegister(false)
+        try {
+            const response = await fetch("http://localhost:5000/api/auth/register", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({username: registerDetails.username, password: registerDetails.password, email: registerDetails.email})
+            })
 
-        const response = await fetch("http://localhost:5000/api/auth/register", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({username: registerDetails.username, password: registerDetails.password, email: registerDetails.email})
-        })
+            if (response.status === 400) {
+                setIsFailedRegister(true)
+            } else if (response.status === 201 ) {
+                setIsSuccessfulRegister(true)
+                setTimeout(() => {
+                    autoLogin();
+                }, 2000)
+            }
 
-        if (response.status === 400) {
-            setIsFailedRegister(true)
-        } else if (response.status === 201 ) {
-            setIsSuccessfulRegister(true)
-            setTimeout(() => {
-                autoLogin();
-            }, 2000)
+        } catch (err) {
+            console.error("Encountered an error while creating account: ", err)
         }
     }
 
