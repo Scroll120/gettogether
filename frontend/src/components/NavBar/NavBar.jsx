@@ -79,6 +79,10 @@ export default function NavBar() {
             <div className='right-section'>
                 {isLoggedIn ? (
                     <>
+                        <div>
+                            <button className='sign-button dashboard' onClick={()=> navigate("/dashboard")}>Dashboard</button>
+                        </div>
+                    {/*
                         <div className='dropdown-menu-wrapper'>
                             <div className='hamburger-icon'> &#9776; </div>
 
@@ -92,6 +96,7 @@ export default function NavBar() {
                                 </li>
                             </ul>
                         </div>
+                    */}
                         <button className="sign-button sign-out" onClick={handleSignOut}>Sign Out</button>
                     </>
                 ) : (

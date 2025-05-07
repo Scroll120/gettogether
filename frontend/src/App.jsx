@@ -3,6 +3,7 @@ import NavBar from "./components/NavBar/NavBar";
 import HomePage from "./pages/HomePage/HomePage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
+import DashboardLayout from "./components/Dashboard/DashboardLayout";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 
 
@@ -35,8 +36,14 @@ function App() {
           element: <LoginPage/>
         },
         {
-          path: "/me",
-          element: <ProfilePage/>
+          path: "/dashboard",
+          element: <DashboardLayout/>,
+          children: [
+            {
+              path: "me",
+              element: <ProfilePage/>
+            },
+          ]
         },
       ],
     },
