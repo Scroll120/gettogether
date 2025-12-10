@@ -8,7 +8,19 @@ export default function DashboardLayout () {
 
     return (
         <section className="dashboard-section">
-            <button onClick={() => navigate("/dashboard/me")}>Profile</button>
+            <div className="dashboard-sidebar">
+                <div className="dashboard-top-section">
+                    <button className="dashboard-button" onClick={() => navigate("/dashboard/me")}>Profile</button>
+                    <button className="dashboard-button" onClick={() => navigate("/dashboard/friends")}>Friends</button>
+                    <button className="dashboard-button" onClick={() => navigate("/dashboard/chats")}>Chats</button>
+                    <button className="dashboard-button" onClick={() => navigate("/dashboard/hangouts")}>Hangouts</button>
+                </div>
+                <div className="dashboard-bottom-section">
+                    <button className="dashboard-button" onClick={() => navigate("/dashboard/settings")}>Settings</button>
+                    <button className="dashboard-button" onClick={() => navigate("/dashboard/languages")}>Languages</button>
+                    <button className="dashboard-button" onClick={() => navigate("/dashboard/support")}>Support</button>
+                </div>
+            </div>
             <Outlet/>
         </section>
     )

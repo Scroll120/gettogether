@@ -1,0 +1,14 @@
+.dashboard-section {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.dashboard-sidebar {
+    margin: 12px;
+    position: relative;
+    width: 18%;
+    height: 580px;
+    background-color: white;
+    border-radius: 16px;
+}
